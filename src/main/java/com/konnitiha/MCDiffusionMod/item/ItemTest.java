@@ -1,5 +1,6 @@
 package com.konnitiha.MCDiffusionMod.item;
 
+import com.konnitiha.MCDiffusionMod.common.HTTPConnection;
 import com.konnitiha.MCDiffusionMod.main.MCDiffusionMod;
 import com.mojang.blaze3d.pipeline.MainTarget;
 import com.mojang.blaze3d.pipeline.TextureTarget;
@@ -48,9 +49,10 @@ public class ItemTest extends Item {
         Level level = ctx.getLevel();
         Minecraft minecraft = Minecraft.getInstance();
 
+        HTTPConnection httpConnection = new HTTPConnection();
         try {
-            this.saveScreenshot(minecraft);
-        } catch (IOException e) {
+            httpConnection.sendGet();
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
